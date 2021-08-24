@@ -1,5 +1,7 @@
 {
   "name": "PruebaAudioIonic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
