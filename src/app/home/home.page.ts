@@ -50,9 +50,8 @@ export class HomePage implements OnInit {
         new Date().getHours() +
         new Date().getMinutes() +
         new Date().getSeconds() +
-        '.3gp';
-      this.filePath =
-        this.file.documentsDirectory.replace(/file:\/\//g, '') + this.fileName;
+        '.wav';
+      this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     } else if (this.platform.is('android')) {
       this.fileName =
@@ -63,11 +62,8 @@ export class HomePage implements OnInit {
         new Date().getHours() +
         new Date().getMinutes() +
         new Date().getSeconds() +
-        '.3gp';
-      // this.filePath =
-      this.filePath = this.fileName;
-        // this.file.externalDataDirectory.replace(/file:\/\//g, '') +
-        // this.fileName;
+        '.wav';
+      this.filePath = this.file.externalDataDirectory + this.fileName;
       this.audio = this.media.create(this.filePath);
     }
     this.audio.startRecord();
@@ -85,17 +81,12 @@ export class HomePage implements OnInit {
 
   playAudio(file, _idx) {
     if (this.platform.is('ios')) {
-      // this.filePath =
-      //   this.file.documentsDirectory.replace(/file:\/\//g, '') + file;
-      this.filePath = file;
+      this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + file;
       this.audio = this.media.create(this.filePath);
     } else if (this.platform.is('android')) {
-      // this.filePath =
-      //   this.file.externalDataDirectory.replace(/file:\/\//g, '') + file;
-      this.filePath = file;
+      this.filePath = this.file.externalDataDirectory + this.fileName;
       this.audio = this.media.create(this.filePath);
     }
     this.audio.play();
-    this.audio.setVolume(0.8);
   }
 }
